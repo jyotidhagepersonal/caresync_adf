@@ -41,7 +41,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_PostgreSqlTable_test",
+						"referenceName": "DS_PostgreSqlTable",
 						"type": "DatasetReference"
 					}
 				],
