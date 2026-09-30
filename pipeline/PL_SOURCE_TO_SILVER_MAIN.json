@@ -48,7 +48,26 @@
 						"value": "@activity('Read source table').output.value",
 						"type": "Expression"
 					},
-					"isSequential": false
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "test",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "test",
+								"value": {
+									"value": "@item()",
+									"type": "Expression"
+								}
+							}
+						}
+					]
 				}
 			}
 		],
@@ -56,6 +75,11 @@
 			"source_system": {
 				"type": "string",
 				"defaultValue": "neon_postgres"
+			}
+		},
+		"variables": {
+			"test": {
+				"type": "String"
 			}
 		},
 		"annotations": []
