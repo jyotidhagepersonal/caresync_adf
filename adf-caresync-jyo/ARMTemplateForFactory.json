@@ -427,7 +427,7 @@
 											{
 												"type": "Query",
 												"text": {
-													"value": "@INSERT into ctrl.audit_log(\nadf_run_id, table_id, stage, status, start_time) VALUES (\n    '@{pipeline().parameters.adf_run_id}',\n    @{item().table_id},'\n    SOURCE_TO_SILVER','\n    IN_PROGRESS', \n    SYSUTCDATETIME())",
+													"value": "INSERT into ctrl.audit_log(\nadf_run_id, table_id, stage, status, start_time) VALUES (\n    '@{pipeline().parameters.adf_run_id}',\n    @{item().table_id},\n    'SOURCE_TO_SILVER',\n    'IN_PROGRESS', \n    SYSUTCDATETIME())",
 													"type": "Expression"
 												}
 											}
