@@ -413,6 +413,12 @@
 												"type": "BinaryReadSettings"
 											}
 										},
+										"sink": {
+											"type": "BinarySink",
+											"storeSettings": {
+												"type": "AzureBlobFSWriteSettings"
+											}
+										},
 										"enableStaging": false
 									},
 									"inputs": [
@@ -424,6 +430,16 @@
 													"value": "@activity('Read Table Details').output.firstRow.source_path",
 													"type": "Expression"
 												}
+											}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "DS_CSV_Binary",
+											"type": "DatasetReference",
+											"parameters": {
+												"folder": "@concat(     activity('Read Table Details').output.firstRow.source_system,     '/',     activity('Read Table Details').output.firstRow.source_table_name,     '/',     variables('start_time') )",
+												"container": "destination"
 											}
 										}
 									]
