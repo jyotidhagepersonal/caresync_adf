@@ -5,6 +5,10 @@
 			"email_receipoents": {
 				"type": "string",
 				"value": "jyotidhagepersonal@gmail.com"
+			},
+			"env": {
+				"type": "string",
+				"value": "DEV"
 			}
 		}
 	},
