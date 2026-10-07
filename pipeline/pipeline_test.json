@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "Copy data Test",
+				"description": "test",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
