@@ -55,8 +55,8 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "body_header",
-					"value": "in case any issue check with team"
+					"variableName": "body_footer",
+					"value": "footerr"
 				}
 			},
 			{
@@ -78,7 +78,7 @@
 				"typeProperties": {
 					"variableName": "email_subject",
 					"value": {
-						"value": "@{pipeline().globalParameters.env} | @{if(greater(activity('check failed count').firstRow.output,0),'FAIL','SUCCESS')}",
+						"value": "@{pipeline().globalParameters.env} | @{if(greater(activity('check failed count').firstRow.output,0),'FAIL','SUCCESS')} | CARESYNC",
 						"type": "Expression"
 					}
 				}
@@ -111,6 +111,54 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "logic app body",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Real all table status",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "prepare email body footer",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "craete email subject",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "check failed count",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "prepare email body header",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "logic_apps_body",
+					"value": {
+						"value": "{\n \"subject\":\"@{variables('email_subject')}\",\n  \"email_receipients \": \"@{pipeline().globalParameters.email_receipoents}\",\n  \"body_header\":\"@{variables('body_header')}\",\n  \"body_footer\":\"@{variables('body_footer')}\",\n  \"status_table\": activity('Real all table status').output.value\n}",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
@@ -124,6 +172,12 @@
 				"type": "String"
 			},
 			"email_subject": {
+				"type": "String"
+			},
+			"logic_apps_body": {
+				"type": "String"
+			},
+			"body_footer": {
 				"type": "String"
 			}
 		},
