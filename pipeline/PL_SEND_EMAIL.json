@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Real all table status",
+				"name": "Read all table status",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -117,7 +117,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "Real all table status",
+						"activity": "Read all table status",
 						"dependencyConditions": [
 							"Succeeded"
 						]
