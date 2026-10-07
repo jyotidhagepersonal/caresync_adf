@@ -1,0 +1,12 @@
+{
+	"name": "adf-caresync-jyo",
+	"properties": {
+		"globalParameters": {
+			"email_receipoents": {
+				"type": "string",
+				"value": "jyotidhagepersonal@gmail.com"
+			}
+		}
+	},
+	"location": "centralindia"
+}
