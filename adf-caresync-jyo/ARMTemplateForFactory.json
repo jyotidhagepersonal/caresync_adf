@@ -335,14 +335,7 @@
 								{
 									"name": "update pipeline as failed",
 									"type": "Fail",
-									"dependsOn": [
-										{
-											"activity": "Silver to gold",
-											"dependencyConditions": [
-												"Failed"
-											]
-										}
-									],
+									"dependsOn": [],
 									"userProperties": [],
 									"typeProperties": {
 										"message": "Gold pipeline failed",
@@ -1080,6 +1073,7 @@
 				"activities": [
 					{
 						"name": "Copy data Test",
+						"description": "test",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
